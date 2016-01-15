@@ -1,4 +1,4 @@
-var Car = require('./models/car')
+var Car = require('../models/car.js')
 
 
 function index(req,res){
@@ -41,7 +41,8 @@ function update(req,res) {
     car.save(function(err){
       if(err) res.json({message:"Cannot update car"})
       res.json({message: "Car updated!"})
-  });
+    });
+  })
 }
 
 function destroy(req,res){

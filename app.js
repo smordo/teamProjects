@@ -4,7 +4,7 @@ var express    = require('express')
   , bodyParser = require('body-parser')
   , mongoose   = require('mongoose')
   , port = process.env.PORT || 3000
-  , routes = require('./config/routes/cars.js')
+  , carRoutes = require('./config/routes/cars')
   , mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/cars_db'
 
 app.use(logger('dev'))
@@ -17,7 +17,7 @@ mongoose.connect(mongoUri, function(){
 })
 
 //use cars route file
-app.use(routes)
+app.use('/cars', carRoutes)
 
 
 //listen on port

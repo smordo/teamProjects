@@ -1,43 +1,16 @@
-var express = require('express'),
-    router = express.Router()
-
-//middleware
-
+var carsController = require('../../controllers/cars_controller.js'),
+    express = require('express'),
+    carRoutes = express.Router()
 
 //define the home page
-router.get('/cars', function(req,res){
-  console.log("index")
-  res.send("INDEX")
-})
+carRoutes.route('/')
+  .get(carsController.index)
+  .post(carsController.create)
 
-router.get('/cars/:id', function(req,res){
-  console.log("show")
-  res.send("SHOW")
-})
+carRoutes.route('/:id')
+  .get(carsController.show)
+  .patch(carsController.update)
+  .delete(carsController.destroy)
 
-router.get('/cars/new', function(req,res){
-  console.log("new")
-  res.send("NEW")
-})
 
-router.post('/cars', function(req,res){
-  console.log("create")
-  res.send("CREATE")
-})
-
-router.get('/cars/:id/edit', function(req,res){
-  console.log("edit")
-  res.send("EDIT")
-})
-
-router.patch('/cars/:id', function(req,res){
-  console.log("update")
-  res.send("UPDATE")
-})
-
-router.delete('/cars/:id', function(req,res){
-  console.log("destroy")
-  res.send("DESTROY")
-})
-
-module.exports = router
+module.exports = carRoutes
