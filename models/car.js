@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var carSchema = new mongoose.Schema({
   make: String,
   model: String,
-  year: Date,
+  year: {type: Number, max:4},
   color: String
 })
 

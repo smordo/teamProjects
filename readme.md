@@ -5,3 +5,4 @@
 5.) created car model
 6.) created cars controller
 7.) cleaned up routes
+8.) added views

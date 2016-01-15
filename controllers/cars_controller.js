@@ -19,7 +19,7 @@ function show(req,res){
 function create(req,res){
 
   console.log('in POST');
-  console.log('body:', request.body);
+  console.log('body:', req.body);
 
 
   var car  = new Car()
