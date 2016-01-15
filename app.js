@@ -5,14 +5,15 @@ var express    = require('express')
   , mongoose   = require('mongoose')
   , port = process.env.PORT || 3000
   , routes = require('./config/routes/cars_routes.js')
+  , mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/cars_db'
 
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 
 //connect to mongodb via mongoose
-mongoose.connect('mongodb://localhost/cars_db', function(){
-  console.log('Mongodb connected to db cars')
+mongoose.connect(mongoUri, function(){
+  console.log('Mongodb connected to db cars via mongoUri')
 })
 
 //use cars route file
