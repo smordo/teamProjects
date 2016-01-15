@@ -3,6 +3,7 @@ var express    = require('express')
   , logger     = require('morgan')
   , bodyParser = require('body-parser')
   , mongoose   = require('mongoose')
+  , path = require('path')
   , port = process.env.PORT || 3000
   , carRoutes = require('./config/routes/cars')
   , mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost/cars_db'
@@ -15,6 +16,12 @@ app.use(bodyParser.urlencoded({extended:false}))
 mongoose.connect(mongoUri, function(){
   console.log('Mongodb connected to db cars via mongoUri')
 })
+
+
+app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+
 
 //use cars route file
 app.use('/cars', carRoutes)

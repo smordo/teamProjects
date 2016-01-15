@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car App</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
+</head>
+
+<body>
+  <div class="jumbotron">
+    <h1 align="center">
+      Car App
+    </h1>
+  </div>
+  <div class="container">
+
+    <% for(var i=0; i< cars.length; i++){ %>
+      <ul>
+        <li><b>Make : </b> <%= cars[i].make%></li>
+        <li><b>Model : </b> <%= cars[i].model%></li>
+        <li><b>Year : </b> <%= cars[i].year%></li>
+        <li><b>Color : </b> <%= cars[i].color%></li>
+      </ul>
+    <% } %>
+  </div>
+
+  <hr>
+      <div class="container">
+          <% include ./partials/car/form %>
+      </div>
+</body>

@@ -4,12 +4,12 @@ var Car = require('../models/car.js')
 function index(req,res){
   Car.find(function(err,cars){
     if(err) res.json({message: "No cars found"})
-    res.json(cars)
+    res.render('layout', ({cars: cars}));
   })
 }
 
 function show(req,res){
-  var id = request.params.id
+  var id = req.params.id
   Car.findById({_id: id}, function(err, car){
     if (err) res.json({message: "No car found"})
     res.json({car: car})
@@ -17,6 +17,11 @@ function show(req,res){
 }
 
 function create(req,res){
+
+  console.log('in POST');
+  console.log('body:', request.body);
+
+
   var car  = new Car()
   car.make = req.body.make
   car.model = req.body.model
@@ -30,7 +35,7 @@ function create(req,res){
 }
 
 function update(req,res) {
-  var id = request.params.id
+  var id = req.params.id
   Car.findOneAndUpdate({_id: id}, function(err, car){
     if (err) res.json({message: "No car found"})
     if(req.body.make) car.make = req.body.make
@@ -46,7 +51,7 @@ function update(req,res) {
 }
 
 function destroy(req,res){
-  var id = request.params.id
+  var id = req.params.id
   Car.findById({_id: id}, function(err, car){
     if (err) res.json({message: "No car found"})
     res.json({message: "Car deleted."})
