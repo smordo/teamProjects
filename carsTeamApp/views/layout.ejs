@@ -16,14 +16,13 @@
 
     <% for(var i=0; i< cars.length; i++){ %>
       <ul>
-        <!-- <a href="/show.ejs"><%= cars[i].make%></a> -->
         <li><b>Make : </b> <%= cars[i].make%></li>
         <li><b>Model : </b> <%= cars[i].model%></li>
         <li><b>Year : </b> <%= cars[i].year%></li>
         <li><b>Color : </b> <%= cars[i].color%></li>
-        <!-- <a href="/destroy/<%=cars[i]._id %>"> Delete </a> -->
       </ul>
-      <a href="../cars/<%= cars[i]._id %>" title="Show Car">Show Car</a>
+
+
     <% } %>
   </div>
 
