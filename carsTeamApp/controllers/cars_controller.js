@@ -52,11 +52,12 @@ function update(req,res) {
 
 function destroy(req,res){
   var id = req.params.id
-  Car.findById({_id: id}, function(err, car){
+  Car.findByIdAndRemove({'_id' : id}, function(err, car){
     if (err) res.json({message: "No car found"})
-    res.json({message: "Car deleted."})
+    res.redirect('/cars')
   })
 }
+
 
 module.exports = {
   index: index,
